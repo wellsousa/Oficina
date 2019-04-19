@@ -1,0 +1,79 @@
+
+DROP DATABASE IF EXISTS oficina2;
+
+CREATE DATABASE oficina2
+CHARACTER SET="utf8"
+COLLATE="utf8_general_ci"; 
+
+DROP TABLE IF EXISTS cargos;
+
+CREATE TABLE cargos(id INT AUTO_INCREMENT,
+                     nome VARCHAR(50),
+                     descricao TEXT,
+                     created_at DATETIME,
+                     updated_at DATETIME,
+                     deleted_at DATETIME,
+                     PRIMARY KEY(id));
+
+INSERT INTO cargos(nome, descricao)
+            values("atendente", ""),
+                  ("serviços gerais", ""),
+                  ("mecânico", ""),
+                  ("gerente", "");
+
+DROP TABLE IF EXISTS funcionarios;
+
+CREATE TABLE funcionarios(id INT AUTO_INCREMENT,
+                         nome VARCHAR(50),
+                         cargo INT,
+                         created_at DATETIME,
+                         updated_at DATETIME,
+                         deleted_at DATETIME,
+                         PRIMARY KEY(id));
+
+INSERT INTO funcionarios(nome, cargo)
+             values("ANTONIO DA SILVA", 1),
+                   ("MARIA ALVES", 1),
+                   ("MAUROS GOMES", 3),
+                   ("LUIS DE CASTRO", 3),
+                   ("PAULO MONTES", 3),
+                   ("OTAVIO CASTILHO", 4),
+                   ("TIAGO FARIAS", 4);
+
+DROP TABLE IF EXISTS clientes;
+
+CREATE TABLE clientes(id INT AUTO_INCREMENT,
+                      nome VARCHAR(50),
+                      sexo varchar(1),
+                      telefone VARCHAR(15),
+                      email VARCHAR(50),
+                      tipo_logradouro INT(2),
+                      logradouro VARCHAR(50),
+                      numero INT(5),
+                      complemento int(2),
+                      bairro VARCHAR(50),
+                      cidade VARCHAR(50),
+                      UF varchar(2),
+                      created_at DATETIME,
+                      updated_at DATETIME,
+                      deleted_at DATETIME,
+                      PRIMARY KEY(id));
+
+
+INSERT INTO clientes(nome, sexo, telefone, email, tipo_logradouro, logradouro, numero, complemento, bairro, cidade, UF)
+              values("CLAUDIO FONSECA DA SILVA", "M", "31987234568", "claudiofs@gmail.com", 1, "MANOEL SALES BARBOSA", 274, 1, "BARREIRO", "BELO HORIZONTE", "MG"),
+                   ("LAURA DE ANDRADE", "F", "31975691231","lauraa@outllook.com", 2, "Contria", 372, 2, "BARROCA", "BELO HORIZONTE", "MG");
+
+DROP TABLE IF EXISTS orcamentos;
+
+CREATE TABLE orcamentos(id INT AUTO_INCREMENT,
+                      cod_cliente INT,
+                      cod_funcionario INT,
+                      descricao TEXT,
+                      valor NUMERIC,
+                      created_at DATETIME,
+                      updated_at DATETIME,
+                      deleted_at DATETIME,
+                      PRIMARY KEY(id),
+                      CONSTRAINT FK_cod_cliente FOREIGN KEY(cod_cliente) REFERENCES clientes(id),
+                      CONSTRAINT FK_cod_funcionario FOREIGN KEY(cod_funcionario) REFERENCES funcionarios(id));

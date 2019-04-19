@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/home', 'Home\HomeController@index');
+
+Route::get('/orcamento', 'Orcamento\OrcamentoController@index');
