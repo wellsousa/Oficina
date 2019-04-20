@@ -1,9 +1,8 @@
-@extends("Templates.Default", ["current"=>"home"])
+@extends("Templates.Default", ["current" => "atendimento"])
 
 @section('custom_head')
-   <title>Home</title>
+   <title>Orçamento</title>
 @endsection
-
 
 @section('content')
 
@@ -18,7 +17,7 @@
                         <h4 class="card-title">Orçamento - Cadastro</h4>
 
                         <div>
-                            <a href="/novoOrcamento" class="btn btn-secondary">
+                            <a href="/orcamento/criar" class="btn btn-secondary">
                                 <div style="font-size: 48px">
                                     <i class="fas fa-folder-plus"></i> 
                                 </div>
@@ -60,5 +59,4 @@
 </div>
 
 @endsection
-
 

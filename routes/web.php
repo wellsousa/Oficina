@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'Home\HomeController@index');
 
 Route::get('/home', 'Home\HomeController@index');
 
-Route::get('/orcamento', 'Orcamento\OrcamentoController@index');
+Route::get('/orcamento', 'Atendimento\OrcamentoController@index');
+
+Route::get('/orcamento/criar', 'Atendimento\OrcamentoController@create');

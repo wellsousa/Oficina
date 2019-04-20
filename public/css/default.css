@@ -7,3 +7,12 @@ body{
 .navbar{
     margin: 20px;
 }
+
+label{
+    margin: 0;
+    font-weight: bold;
+}
+
+form{
+    margin: 20px;
+}

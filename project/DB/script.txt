@@ -10,9 +10,9 @@ DROP TABLE IF EXISTS cargos;
 CREATE TABLE cargos(id INT AUTO_INCREMENT,
                      nome VARCHAR(50),
                      descricao TEXT,
-                     created_at DATETIME,
-                     updated_at DATETIME,
-                     deleted_at DATETIME,
+                      created_at TIMESTAMP,
+                      updated_at TIMESTAMP,
+                      deleted_at TIMESTAMP,
                      PRIMARY KEY(id));
 
 INSERT INTO cargos(nome, descricao)
@@ -26,9 +26,9 @@ DROP TABLE IF EXISTS funcionarios;
 CREATE TABLE funcionarios(id INT AUTO_INCREMENT,
                          nome VARCHAR(50),
                          cargo INT,
-                         created_at DATETIME,
-                         updated_at DATETIME,
-                         deleted_at DATETIME,
+                      created_at TIMESTAMP,
+                      updated_at TIMESTAMP,
+                      deleted_at TIMESTAMP,
                          PRIMARY KEY(id));
 
 INSERT INTO funcionarios(nome, cargo)
@@ -54,9 +54,9 @@ CREATE TABLE clientes(id INT AUTO_INCREMENT,
                       bairro VARCHAR(50),
                       cidade VARCHAR(50),
                       UF varchar(2),
-                      created_at DATETIME,
-                      updated_at DATETIME,
-                      deleted_at DATETIME,
+                      created_at TIMESTAMP,
+                      updated_at TIMESTAMP,
+                      deleted_at TIMESTAMP,
                       PRIMARY KEY(id));
 
 
@@ -71,9 +71,9 @@ CREATE TABLE orcamentos(id INT AUTO_INCREMENT,
                       cod_funcionario INT,
                       descricao TEXT,
                       valor NUMERIC,
-                      created_at DATETIME,
-                      updated_at DATETIME,
-                      deleted_at DATETIME,
+                      created_at TIMESTAMP,
+                      updated_at TIMESTAMP,
+                      deleted_at TIMESTAMP,
                       PRIMARY KEY(id),
                       CONSTRAINT FK_cod_cliente FOREIGN KEY(cod_cliente) REFERENCES clientes(id),
                       CONSTRAINT FK_cod_funcionario FOREIGN KEY(cod_funcionario) REFERENCES funcionarios(id));

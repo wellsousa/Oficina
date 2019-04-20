@@ -16,24 +16,50 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Serviços</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Clientes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Orçamentos</a>
+      <li @if($current == "home") class="nav-item active" @else class="nav-item" @endif>
+        <a class="nav-link" href="{{ url('/home') }}">Home</a>
       </li>  
-      <li class="nav-item">
-        <a class="nav-link" href="#">Estoque</a>
-      </li>   
+      <li @if($current == "servicos") class="nav-item dropdown active" @else class="nav-item dropdown" @endif>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Serviços
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Produtos da Oficina</a>
+          <a class="dropdown-item" href="#">Estoque de Peças</a>
+        </div>
+      </li>      
+      <li @if($current == "atendimento") class="nav-item dropdown active" @else class="nav-item dropdown" @endif>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Atendimento
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Clientes</a>
+          <a class="dropdown-item" href="{{ url('/orcamento') }}">Orçamento</a>
+          <a class="dropdown-item" href="#">Ordem de Serviço</a>
+        </div>
+      </li>
+      <li @if($current == "administrativo") class="nav-item dropdown active" @else class="nav-item dropdown" @endif>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Administrativo
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Cargos</a>
+          <a class="dropdown-item" href="#">Funcionários</a>
+        </div>
+      </li>
+      <li @if($current == "relatorios") class="nav-item dropdown active" @else class="nav-item dropdown" @endif>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Relatórios
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">1</a>
+          <a class="dropdown-item" href="#">2</a>
+          <a class="dropdown-item" href="#">3</a>
+        </div>
+      </li>      
       <li class="nav-item">
         <a class="nav-link" href="#">Ajuda</a>
-      </li> 
+      </li>             
     </ul>
   </div>
 </nav>
