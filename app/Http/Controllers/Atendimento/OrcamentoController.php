@@ -5,8 +5,14 @@ namespace App\Http\Controllers\Atendimento;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\Orcamento;
+
 class OrcamentoController extends Controller
 {
+
+    public function dashboard(){
+        return view('Atendimento.Orcamento.dashboard');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,10 @@ class OrcamentoController extends Controller
     public function index()
     {
         //
-        return view('Atendimento.Orcamento.index');
+        $orcamentos = Orcamento::all();
+
+
+        return view('Atendimento.Orcamento.index', ['orcamentos' => $orcamentos]);
     }
 
     /**
@@ -38,7 +47,18 @@ class OrcamentoController extends Controller
     public function store(Request $request)
     {
         //
+        $orcamento = new Orcamento();
+
+        $orcamento->cod_funcionario = $request->input('cod_funcionario');
+        $orcamento->cod_cliente = $request->input('cod_cliente');
+        $orcamento->descricao = $request->input('descricao');
+        $orcamento->valor = $request->input('valor');
+
+        $orcamento->save();
+
+        return redirect('/orcamentos');
     }
+    
 
     /**
      * Display the specified resource.
@@ -49,6 +69,13 @@ class OrcamentoController extends Controller
     public function show($id)
     {
         //
+        $orcamento = Orcamento::find($id);
+
+        if(isset($orcamento)){
+            return view('Atendimento.Orcamento.show', ['orcamento' => $orcamento]);
+        }
+
+        return redirect('/orcamentos');
     }
 
     /**
@@ -60,6 +87,12 @@ class OrcamentoController extends Controller
     public function edit($id)
     {
         //
+        $orcamento = Orcamento::find($id);
+        if(isset($orcamento)){
+            return view('Atendimento.Orcamento.edit',["orcamento" => $orcamento]);
+        }
+
+        return redirect('/orcamentos');
     }
 
     /**
@@ -72,6 +105,17 @@ class OrcamentoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $orcamento = Orcamento::find($id);
+        if(isset($orcamento)){
+            $orcamento->cod_funcionario = $request->input('cod_funcionario');
+            $orcamento->cod_cliente = $request->input('cod_cliente');
+            $orcamento->descricao = $request->input('descricao');
+            $orcamento->valor = $request->input('valor');
+
+            $orcamento->save();
+        }
+
+        return redirect('/orcamentos');
     }
 
     /**
@@ -83,5 +127,11 @@ class OrcamentoController extends Controller
     public function destroy($id)
     {
         //
+        $orcamento = Orcamento::find($id);
+        if(isset($orcamento)){
+            $orcamento->delete();
+        }
+
+        return redirect('/orcamentos/');
     }
 }

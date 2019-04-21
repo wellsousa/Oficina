@@ -19,25 +19,12 @@
       <li @if($current == "home") class="nav-item active" @else class="nav-item" @endif>
         <a class="nav-link" href="{{ url('/home') }}">Home</a>
       </li>  
-      <li @if($current == "servicos") class="nav-item dropdown active" @else class="nav-item dropdown" @endif>
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Serviços
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Produtos da Oficina</a>
-          <a class="dropdown-item" href="#">Estoque de Peças</a>
-        </div>
-      </li>      
-      <li @if($current == "atendimento") class="nav-item dropdown active" @else class="nav-item dropdown" @endif>
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Atendimento
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Clientes</a>
-          <a class="dropdown-item" href="{{ url('/orcamento') }}">Orçamento</a>
-          <a class="dropdown-item" href="#">Ordem de Serviço</a>
-        </div>
-      </li>
+      <li @if($current == "clientes") class="nav-item active" @else class="nav-item" @endif>
+        <a class="nav-link" href="{{ url('/clientes') }}">Clientes</a>
+      </li> 
+      <li @if($current == "orcamentos") class="nav-item active" @else class="nav-item" @endif>
+        <a class="nav-link" href="{{ url('/orcamentos/painel') }}">Orçamentos</a>
+      </li>              
       <li @if($current == "administrativo") class="nav-item dropdown active" @else class="nav-item dropdown" @endif>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Administrativo
@@ -52,9 +39,7 @@
           Relatórios
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">1</a>
-          <a class="dropdown-item" href="#">2</a>
-          <a class="dropdown-item" href="#">3</a>
+          <a class="dropdown-item" href="#">Orçamentos por Período</a>
         </div>
       </li>      
       <li class="nav-item">
