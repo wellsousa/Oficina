@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'Home\HomeController@index');
+Route::get('/', 'Atendimento\OrcamentoController@dashboard');
 
-Route::get('/home', 'Home\HomeController@index');
+//Route::get('/home', 'Home\HomeController@index');
 
 
 Route::get('/orcamentos', 'Atendimento\OrcamentoController@index');
